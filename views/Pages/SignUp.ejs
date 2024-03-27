@@ -1,0 +1,31 @@
+<%- include('../Partials/Header.ejs') %>
+    <div class="d-flex flex-wrap justify-content-center vh-100 align-items-center">
+        <form class="form" id="signup" method="post">
+            <p class="title">Register </p>
+            <p id="error" class="mb-1 text-center text-danger"></p>
+            <p class="message text-light">Signup now and get full access to our app. </p>
+                <input  placeholder="Username" id="username" type="text" name="username" class="form-control vd">
+              
+                <input id="email" placeholder="Email" type="email" class="form-control vd" name="email">
+               
+                <input id="password" placeholder="Password" type="password" class="form-control vd mb-3" name="password">
+             
+            <button class="btn btn-primary">Register</button>
+            <p class="signin text-light">Already have an acount ? <a class="text-decoration-none" href="/login">Sign In</a> </p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('signup').onsubmit = function (event) {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (!username || !email || !password) {
+                document.getElementById('error').textContent = 'Please fill out all fields.';
+                event.preventDefault();
+            } else {
+                document.getElementById('error').textContent = '';
+            }
+        };
+    </script>
+    <%- include('../Partials/Footer.ejs') %>

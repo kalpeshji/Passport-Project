@@ -1,0 +1,30 @@
+<%- include('../Partials/Header.ejs') %>
+    <div class="d-flex flex-wrap justify-content-center vh-100 align-items-center">
+        <form class="w-50 bg-dark1 p-3 rounded-4" id="blogForm" method="post" action="/add"
+            enctype="multipart/form-data">
+            <p class="title">Add Blog</p>
+            <p id="error" class="mb-4 text-center text-danger"></p>
+            <input id="title" type="text" name="title" class="form-control mb-3" placeholder="TITLE">
+            <label for="" class="form-label text-primary">Blog Image :</label>
+            <input id="file" type="file" name="blogImage" class="form-control mb-3">
+            <textarea class="form-control mb-3" placeholder="DESCRIPTION" name="description" id="description" cols="30"
+                rows="10"></textarea>
+            <a href="/blog" class="btn btn-secondary">Cancel</a>
+            <button class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('blogForm').onsubmit = function (event) {
+            var title = document.getElementById('title').value;
+            var file = document.getElementById('file').value;
+            var dsc = document.getElementById('description').value;
+
+            if (!title || !file || !dsc) {
+                document.getElementById('error').textContent = 'Please fill out all fields.';
+                event.preventDefault();
+            } else {
+                document.getElementById('error').textContent = '';
+            }
+        };
+    </script>
+    <%- include('../Partials/Footer.ejs') %>

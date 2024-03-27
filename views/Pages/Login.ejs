@@ -1,0 +1,29 @@
+<%- include('../Partials/Header.ejs') %>
+    <div class="d-flex flex-wrap justify-content-center vh-100 align-items-center">
+        <form class="form" id="signin" method="post">
+            <p class="title">Login </p>
+            <p id="error" class="mb-1 text-center text-danger"></p>
+            <p class="message text-light">Sign In now and get full access to our app. </p>
+            <input id="username" placeholder="Username" type="text" class="form-control vd" name="username">
+
+            <input id="password" placeholder="Password" type="password" class="form-control vd mb-3" name="password">
+
+            <button class="btn btn-primary">Log In</button>
+            <p class="signin text-light">Don't have an acount ? <a class="text-decoration-none" href="/">Sign Up</a>
+            </p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('signin').onsubmit = function (event) {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                document.getElementById('error').textContent = 'Please fill out all fields.';
+                event.preventDefault();
+            } else {
+                document.getElementById('error').textContent = '';
+            }
+        };
+    </script>
+    <%- include('../Partials/Footer.ejs') %>
